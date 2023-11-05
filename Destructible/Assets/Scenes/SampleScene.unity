@@ -471,6 +471,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2003869468}
   - component: {fileID: 2003869467}
+  - component: {fileID: 2003869469}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -491,16 +492,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabData:
-  - element: 0
-    prefab: {fileID: 3545749220347328586, guid: 787860a01a7a255488b00331130bf305, type: 3}
-  - element: 1
-    prefab: {fileID: 1336918902542161741, guid: 7297dcd26680db64882b6b9554301d6f, type: 3}
-  - element: 2
-    prefab: {fileID: 8152021508400283262, guid: 9feb3a51023531644b1f87bde5aa0ae5, type: 3}
-  - element: 3
-    prefab: {fileID: 7670111797302329716, guid: c443706d8e32bb5449bc30200c31fec5, type: 3}
+  - {fileID: 9162904123622761848, guid: 498015c72d686ac4e9a7e66f5867364e, type: 3}
+  - {fileID: 3545749220347328586, guid: 787860a01a7a255488b00331130bf305, type: 3}
+  - {fileID: 6025782642579889713, guid: 3f33839d3a580f142a0942fb91403652, type: 3}
+  - {fileID: 1336918902542161741, guid: 7297dcd26680db64882b6b9554301d6f, type: 3}
+  - {fileID: 8152021508400283262, guid: 9feb3a51023531644b1f87bde5aa0ae5, type: 3}
+  - {fileID: 7670111797302329716, guid: c443706d8e32bb5449bc30200c31fec5, type: 3}
   particleIndex: 0
-  physicsUpdateDelta: 0.05
+  physicsUpdateDelta: 0.2
   currParticle: {fileID: 0}
 --- !u!4 &2003869468
 Transform:
@@ -517,6 +516,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2003869469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003869466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389b7d6f404894248bf34c334b919981, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gm: {fileID: 2003869467}
+  reloadParticlePrefabs: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

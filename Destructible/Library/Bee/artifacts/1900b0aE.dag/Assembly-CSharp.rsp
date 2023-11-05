@@ -354,11 +354,13 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.11f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/GameManager.cs"
 "Assets/Particle.cs"
-"Assets/ParticleDB.cs"
-"Assets/Sand.cs"
-"Assets/Stone.cs"
-"Assets/Water.cs"
-"Assets/WetSand.cs"
+"Assets/ParticlePrefabLoader.cs"
+"Assets/Particles/Lava.cs"
+"Assets/Particles/Sand.cs"
+"Assets/Particles/Smoke.cs"
+"Assets/Particles/Stone.cs"
+"Assets/Particles/Water.cs"
+"Assets/Particles/WetSand.cs"
 -langversion:9.0
 
 /deterministic

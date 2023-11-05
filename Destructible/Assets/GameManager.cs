@@ -5,16 +5,16 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager inst = null;
+    public System.Random r = new System.Random();
 
-    [System.Serializable]
+    /*[System.Serializable]
     public class elementPrefabData {
-        public Particle.Element element;
         public GameObject prefab;
-    }
+    }*/
 
     public Particle[][] grid;
 
-    public elementPrefabData[] prefabData;
+    public List<GameObject> prefabData = new List<GameObject>();
 
     List<GameObject> particleList = new List<GameObject>();
 
@@ -31,8 +31,8 @@ public class GameManager : MonoBehaviour
             Destroy(this);
         }
 
-        foreach (elementPrefabData data in prefabData) {
-            particleList.Add(data.prefab);
+        foreach (GameObject prefab in prefabData) {
+            particleList.Add(prefab);
         }
 
         currParticle = particleList[0];
@@ -60,10 +60,10 @@ public class GameManager : MonoBehaviour
         GameObject.Instantiate(particlePrefab, TruncateVec(pos), Quaternion.identity);
     }
 
-    public void SpawnParticle(Particle.Element element, Vector3 pos) {
-        foreach(elementPrefabData data in prefabData) {
-            if (data.element == element) {
-                SpawnParticle(data.prefab, pos);
+    public void SpawnParticle(System.Type type, Vector3 pos) {
+        foreach(GameObject prefab in prefabData) {
+            if (prefab.GetComponent<Particle>().GetType() == type) {
+                SpawnParticle(prefab, pos);
             }
         }
     }

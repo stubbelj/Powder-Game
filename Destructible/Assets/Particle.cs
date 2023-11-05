@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class Particle : MonoBehaviour
 {
-    public enum Element {Sand, Stone, Water, WetSand}
     public enum MatterState {Solid, Liquid, Gas}
-    public Element element;
 
     public int mass;
     public MatterState matterState;
@@ -15,29 +13,39 @@ public class Particle : MonoBehaviour
     bool waiting = false;
 
     protected virtual void Awake() {
+        LoadParticleData();
+    }
+
+    protected virtual void Start() {
         gm = GameManager.inst;
-        Init();
     }
 
     protected virtual bool CheckSpace(Vector3 point) {
         return GameManager.inst.CheckSpace(point);
     }
 
-    protected virtual void Update() {
+    protected virtual void FixedUpdate() {
         if (!waiting) {
             waiting = true;
-            Invoke("WaitForPhysics", gm.physicsUpdateDelta);
+            StartCoroutine(SimulatePhysics());
         }
     }
 
-    protected virtual void WaitForPhysics() {
-        waiting = false;
-        SimulatePhysics();
-    }
+    protected virtual IEnumerator SimulatePhysics(){
+        float updateVariance = 0;
+        if (this.matterState == MatterState.Liquid) {
+            updateVariance = 0.1f;
+        } else if (this.matterState == MatterState.Gas) {
+            updateVariance = 0.3f;
+        }
 
-    protected virtual void SimulatePhysics(){
+        yield return new WaitForSeconds(gm.physicsUpdateDelta + (gm.r.Next(0, 2) == 0 ? 1 : -1) * gm.physicsUpdateDelta * updateVariance);
+
         InteractWithNeighbors();
+
         Gravity();
+
+        waiting = false;
     }
 
     protected virtual void Gravity(){}
@@ -59,7 +67,45 @@ public class Particle : MonoBehaviour
 
     protected virtual void Interact(Particle particle){}
 
-    protected virtual void Init(){}
+    public class ParticleData {
+        public int mass;
+        public Particle.MatterState matterState;
 
-    protected virtual void LoadParticleData(){}
+        public ParticleData (int newMass = 10, Particle.MatterState newMatterState = Particle.MatterState.Solid) {
+            mass = newMass;
+            matterState = newMatterState;
+        }
+    }
+
+    static Dictionary<System.Type, ParticleData> particleData = new Dictionary<System.Type, ParticleData>() {
+        {typeof(Sand), new ParticleData(
+            newMass : 50,
+            newMatterState : MatterState.Solid
+        )},
+        {typeof(Stone), new ParticleData(
+            newMass : 200,
+            newMatterState : MatterState.Solid
+        )},
+        {typeof(Water), new ParticleData(
+            newMass : 100,
+            newMatterState : MatterState.Liquid
+        )},
+        {typeof(WetSand), new ParticleData(
+            newMass : 150,
+            newMatterState : MatterState.Solid
+        )},
+        {typeof(Lava), new ParticleData(
+            newMass : 100,
+            newMatterState : MatterState.Liquid
+        )},
+        {typeof(Smoke), new ParticleData(
+            newMass : 10,
+            newMatterState : MatterState.Gas
+        )},
+    };
+
+    public void LoadParticleData() {
+        mass = particleData[this.GetType()].mass;
+        matterState = particleData[this.GetType()].matterState;
+    }
 }
