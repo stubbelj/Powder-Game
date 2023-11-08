@@ -361,6 +361,7 @@
 "Assets/Particles/Stone.cs"
 "Assets/Particles/Water.cs"
 "Assets/Particles/WetSand.cs"
+"Assets/UIManager.cs"
 -langversion:9.0
 
 /deterministic

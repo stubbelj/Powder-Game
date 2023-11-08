@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager inst = null;
+    public UIManager uiManager;
+
     public System.Random r = new System.Random();
 
     /*[System.Serializable]
@@ -16,7 +18,7 @@ public class GameManager : MonoBehaviour
 
     public List<GameObject> prefabData = new List<GameObject>();
 
-    List<GameObject> particleList = new List<GameObject>();
+    public List<GameObject> particleList = new List<GameObject>();
 
     public int particleIndex = 0;
 
@@ -47,9 +49,6 @@ public class GameManager : MonoBehaviour
             SpawnParticle(currParticle, mousPos);
         }
 
-        if (Input.GetKeyDown("r")) {
-            ScrollParticle();
-        }
     }
 
     public void SpawnParticle(GameObject particlePrefab, Vector3 pos) {
@@ -68,13 +67,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ScrollParticle() {
-        if (particleIndex < particleList.Count - 1) {
-            particleIndex++;
+    public void ScrollParticle(int index) {
+        if (index > 0) {
+            if (particleIndex + index < particleList.Count) {
+                particleIndex += index;
+            } else {
+                particleIndex = 0;
+            }
         } else {
-            particleIndex = 0;
+            if (0 <= particleIndex + index) {
+                particleIndex += index;
+            } else {
+                particleIndex = particleList.Count - 1;
+            }
         }
+
         currParticle = particleList[particleIndex];
+
+        uiManager.UpdateCurrParticle();
     }
 
     public bool CheckSpace(Vector2 point) {
