@@ -102,6 +102,10 @@ public class Particle : MonoBehaviour
             newMass : 10,
             newMatterState : MatterState.Gas
         )},
+        {typeof(Glass), new ParticleData(
+            newMass : 50,
+            newMatterState : MatterState.Solid
+        )},
     };
 
     public void LoadParticleData() {
