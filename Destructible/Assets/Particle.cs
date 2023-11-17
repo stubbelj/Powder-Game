@@ -78,30 +78,55 @@ public class Particle : MonoBehaviour
     }
 
     static Dictionary<System.Type, ParticleData> particleData = new Dictionary<System.Type, ParticleData>() {
-        {typeof(Sand), new ParticleData(
-            newMass : 50,
-            newMatterState : MatterState.Solid
-        )},
-        {typeof(Stone), new ParticleData(
-            newMass : 200,
-            newMatterState : MatterState.Solid
-        )},
-        {typeof(Water), new ParticleData(
-            newMass : 100,
-            newMatterState : MatterState.Liquid
-        )},
-        {typeof(WetSand), new ParticleData(
-            newMass : 150,
-            newMatterState : MatterState.Solid
-        )},
-        {typeof(Lava), new ParticleData(
-            newMass : 100,
-            newMatterState : MatterState.Liquid
-        )},
-        {typeof(Smoke), new ParticleData(
-            newMass : 10,
-            newMatterState : MatterState.Gas
-        )},
+{typeof(Lava), new ParticleData(
+newMass : 100,
+newMatterState : MatterState.Solid
+)},
+
+{typeof(Sand), new ParticleData(
+newMass : 100,
+newMatterState : MatterState.Solid
+)},
+
+{typeof(Smoke), new ParticleData(
+newMass : 100,
+newMatterState : MatterState.Solid
+)},
+
+{typeof(Stone), new ParticleData(
+newMass : 100,
+newMatterState : MatterState.Solid
+)},
+
+{typeof(Water), new ParticleData(
+newMass : 100,
+newMatterState : MatterState.Solid
+)},
+
+{typeof(WetSand), new ParticleData(
+newMass : 100,
+newMatterState : MatterState.Solid
+)},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     };
 
     public void LoadParticleData() {
@@ -109,3 +134,8 @@ public class Particle : MonoBehaviour
         matterState = particleData[this.GetType()].matterState;
     }
 }
+
+
+
+
+
