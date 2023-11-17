@@ -106,6 +106,14 @@ public class Particle : MonoBehaviour
             newMass : 50,
             newMatterState : MatterState.Solid
         )},
+        {typeof(Grass), new ParticleData(
+            newMass : 0,
+            newMatterState : MatterState.Solid
+        )},
+        {typeof(GrassSeed), new ParticleData(
+            newMass : 0,
+            newMatterState : MatterState.Solid
+        )},
     };
 
     public void LoadParticleData() {

@@ -360,6 +360,8 @@
 "Assets/Particle.cs"
 "Assets/ParticlePrefabLoader.cs"
 "Assets/Particles/Glass.cs"
+"Assets/Particles/Grass.cs"
+"Assets/Particles/GrassSeed.cs"
 "Assets/Particles/Lava.cs"
 "Assets/Particles/Sand.cs"
 "Assets/Particles/Smoke.cs"
