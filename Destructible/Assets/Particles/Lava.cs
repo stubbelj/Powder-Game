@@ -20,11 +20,11 @@ public class Lava : Particle
         if (particle != null) {
             if (particle.GetType() == typeof(Water)) {
                 gm.SpawnParticle(typeof(Stone), transform.position);
-                Destroy(particle);
+                Destroy(particle.gameObject);
             }
             else if (particle.GetType() == typeof(Sand)) {
                 gm.SpawnParticle(typeof(Glass), transform.position);
-                Destroy(particle);
+                Destroy(particle.gameObject);
             }
         }
     }

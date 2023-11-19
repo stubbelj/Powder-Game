@@ -106,6 +106,10 @@ public class Particle : MonoBehaviour
             newMass : 50,
             newMatterState : MatterState.Solid
         )},
+        {typeof(Virus), new ParticleData(
+            newMass : 100,
+            newMatterState : MatterState.Solid
+        )},
     };
 
     public void LoadParticleData() {
