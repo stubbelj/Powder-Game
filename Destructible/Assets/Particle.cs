@@ -110,6 +110,10 @@ public class Particle : MonoBehaviour
             newMass : 100,
             newMatterState : MatterState.Solid
         )},
+        {typeof(Antidote), new ParticleData(
+            newMass : 100,
+            newMatterState : MatterState.Solid
+        )},
     };
 
     public void LoadParticleData() {

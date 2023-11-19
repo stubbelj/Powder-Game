@@ -23,9 +23,8 @@ public class Virus : Particle
 
     protected override void Interact(Particle particle)
     {
-        if (particle != null && particle.GetType() != typeof(Virus))
+        if (particle != null && particle.GetType() != typeof(Virus) && particle.GetType() != typeof(Antidote))
         {
-            print("HIII");
             Destroy(particle.gameObject);
         }
     }
