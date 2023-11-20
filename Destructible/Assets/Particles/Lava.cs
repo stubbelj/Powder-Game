@@ -19,7 +19,7 @@ public class Lava : Particle
     protected override void Interact(Particle particle) {
         if (particle != null) {
             if (particle.GetType() == typeof(Water)) {
-                gm.SpawnParticle(typeof(Stone), transform.position);
+                gm.SpawnParticle(typeof(Stone), particle.transform.position);
                 Destroy(particle);
             }
             if (particle.GetType() == typeof(Sand)) {
@@ -28,6 +28,10 @@ public class Lava : Particle
             }
             if (particle.GetType() == typeof(GrassSeed) || particle.GetType() == typeof(Grass)) {
                 Destroy(particle.gameObject);
+            }
+            if (particle.GetType() == typeof(Ice)) {
+                gm.SpawnParticle(typeof(Water), particle.transform.position);
+                Destroy(particle);
             }
         }
     }

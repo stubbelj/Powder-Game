@@ -362,6 +362,7 @@
 "Assets/Particles/Glass.cs"
 "Assets/Particles/Grass.cs"
 "Assets/Particles/GrassSeed.cs"
+"Assets/Particles/Ice.cs"
 "Assets/Particles/Lava.cs"
 "Assets/Particles/Sand.cs"
 "Assets/Particles/Smoke.cs"

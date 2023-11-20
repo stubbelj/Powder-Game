@@ -114,6 +114,10 @@ public class Particle : MonoBehaviour
             newMass : 0,
             newMatterState : MatterState.Solid
         )},
+        {typeof(Ice), new ParticleData(
+            newMass : 50,
+            newMatterState : MatterState.Solid
+        )},
     };
 
     public void LoadParticleData() {

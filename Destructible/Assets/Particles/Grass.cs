@@ -8,7 +8,9 @@ public class Grass : Particle
     private int maxGrowth = 3;
     private bool bladeGrown;
     protected override void Gravity() {
-        for (int randVal = Random.Range(0, 3); (randVal <= 2) && (growth <= maxGrowth) && (bladeGrown == false); randVal += 1) {
+        for (int randVal = Random.Range(0, 3);
+         (randVal <= 2) && (growth <= maxGrowth) && (bladeGrown == false);
+          randVal += 1) {
             Vector3 newPosition = Vector3.zero;
             if (randVal == 0) {
                 newPosition = transform.position + new Vector3(0, 1, 0);
@@ -18,6 +20,12 @@ public class Grass : Particle
             }
             else if (randVal == 2) {
                 newPosition = transform.position + new Vector3(1, 1, 0);
+            }
+
+            //check if theres water or liquid impeding growth, if so destroy it.
+            Particle particle = gm.GetParticle(newPosition);
+            if (particle != null && particle.matterState != MatterState.Solid) {
+                Destroy(particle.gameObject);
             }
 
             if (!CheckSpace(newPosition)) {
