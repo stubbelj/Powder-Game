@@ -113,6 +113,22 @@ public class Particle : MonoBehaviour
         {typeof(Antidote), new ParticleData(
             newMass : 100,
             newMatterState : MatterState.Solid
+        )}
+        {typeof(Grass), new ParticleData(
+            newMass : 0,
+            newMatterState : MatterState.Solid
+        )},
+        {typeof(GrassSeed), new ParticleData(
+            newMass : 0,
+            newMatterState : MatterState.Solid
+        )},
+        {typeof(Ice), new ParticleData(
+            newMass : 50,
+            newMatterState : MatterState.Solid
+        )},
+        {typeof(Human), new ParticleData(
+            newMass : 50,
+            newMatterState : MatterState.Solid
         )},
     };
 

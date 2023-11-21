@@ -22,9 +22,16 @@ public class Lava : Particle
                 gm.SpawnParticle(typeof(Stone), transform.position);
                 Destroy(particle.gameObject);
             }
-            else if (particle.GetType() == typeof(Sand)) {
-                gm.SpawnParticle(typeof(Glass), transform.position);
+            if (particle.GetType() == typeof(Sand)) {
+                gm.SpawnParticle(typeof(Glass), particle.transform.position);
                 Destroy(particle.gameObject);
+            }
+            if (particle.GetType() == typeof(GrassSeed) || particle.GetType() == typeof(Grass)) {
+                Destroy(particle.gameObject);
+            }
+            if (particle.GetType() == typeof(Ice)) {
+                gm.SpawnParticle(typeof(Water), particle.transform.position);
+                Destroy(particle);
             }
         }
     }
