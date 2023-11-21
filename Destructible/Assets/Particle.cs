@@ -118,6 +118,10 @@ public class Particle : MonoBehaviour
             newMass : 50,
             newMatterState : MatterState.Solid
         )},
+        {typeof(Human), new ParticleData(
+            newMass : 50,
+            newMatterState : MatterState.Solid
+        )},
     };
 
     public void LoadParticleData() {
